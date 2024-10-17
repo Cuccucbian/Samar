@@ -1,0 +1,441 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+html, body{
+    font-family: "Roboto", sans-serif;
+    color: #636363;
+}
+header{
+    position: absolute;/*có position: absolute; và width: 100%; là tự động căn giữa và position: absolute có thể khiến cho phần carousel ở dưới tràn lên*/
+    width: 100%;
+    top: 0;
+    left: 0;
+}
+.container{
+    max-width: 1199px;
+    margin: auto;
+    /*nếu có max-width: 1199px; mà ko có margin: auto; thì nó sẽ lệch về bên trái, margin: auto; để tự động căn giữa theo chiều ngang*/
+}
+.header_content{
+    display: flex;
+    justify-content: space-between;
+    align-items: center ;
+}
+.header_content_right nav{
+    display: flex;
+    align-items: center;
+}
+.header_content_right ul{
+    list-style: none;
+    display: flex;
+    margin-right: 30px;
+}
+.header_content_right li{
+    padding: 55px 15px;
+}
+
+.header_content_right a{
+    text-decoration: none;
+    color: black;
+    font-weight: 500;
+}
+
+a span {
+      display: inline-block;
+    transition: all 1s;
+}
+a:hover {
+    color: #f55f8d;
+}
+a:hover span {
+    animation: upToDown 0.3s;
+}
+  
+@keyframes upToDown {
+    49% {
+      transform: translateY(100%);
+    }
+    50% {
+      opacity: 0;
+      transform: translateY(-100%);
+    }
+    51% {
+      opacity: 1;
+    }
+}
+
+.btn-grad {
+    /*  linear-gradient(hướng trải màu, danh sách các màu );
+        _ to right: màu đang được trải từ trái sang phải
+        _ #fc00ff 0%, #00dbde 51%, #fc00ff 100%: thứ tự màu cần trải, phần trăm sau mã màu là vị trí bắt đầu trải của màu đó.
+          Nếu không thêm phần trăm thì linear-gradient sẽ tự chia vùng màu sao cho đều nhau
+    */
+    background-image: linear-gradient(
+      to right,
+      #f55f8d  0%,
+      #f8ae56 51%,
+      #f55f8d 100%
+    );
+  
+    margin: 10px;
+    padding: 20px 35px;
+    text-align: center;
+    text-transform: uppercase;
+    transition: 0.5s;
+  
+    /*   tăng kích thước của màu nền, giúp vùng trải màu rộng hơn làm màu loan ra rộng hơn */
+    background-size: 200%;
+  
+    color: white;
+    box-shadow: 0 0 20px #eee;
+    border-radius: 30px;
+    display: block;
+    border: transparent;
+}
+  
+.btn-grad:hover {
+    /*   Khi hover chỉnh vị trí ưu tiên hiển thị của màu nền. 
+    Mặc định không xét giá trị cho background-position 
+    thì sẽ có giá trị mặc định background-position: left top; 
+    */
+    background-position: right center;
+  
+    color: #fff;
+    text-decoration: none;
+}
+
+.carousel{
+    padding-top: 180px;
+    background-image: url(./Samar/pic2.png);
+    background-position: top;
+    background-size: 100%;
+    /*background-position: top; để cho cái background-image nó hiện phần top của background-image, nếu là center thì hiện phần giữa, bottom thì hiện phần cuối ảnh, còn ko có background-size: 100%; thì sẽ bị tràn ảnh*/
+    overflow: hidden;
+    /*overflow: hidden là để giấu nội dung thừa, ở cái ảnh có 4 góc bo tròn, nếu ko có overflow: hidden thì nó sẽ hiện ra cái thanh scroll để kéo xem hết nội dung*/
+
+}
+.carousel_content{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.title p{
+    margin-bottom: 15px;
+    font-size: 22px;
+    font-weight: 600;
+    color: #f55f8d;
+}
+
+.title h2{
+    margin-bottom: 15px;
+    font-weight: 700;
+    font-size: 70px;
+    line-height: 1.0;
+    color: black;
+}
+
+.article p{
+    font-size: 18px;
+    margin-bottom: 15px;
+}
+
+.article li{
+    margin-bottom: 15px;
+    list-style: none;
+}
+
+.carousel_content_right .article i{
+    background-image: linear-gradient(
+      to right,
+      #f55f8d  0%,
+      #f8ae56 51%,
+      #f55f8d 100%
+    );
+    color: white;
+    font-size: 25px;
+    padding: 5px;
+    border-radius: 35px;
+    background-size: 200%;
+    margin-right: 5px;
+}
+
+.carousel_content_left span{
+    font-size: 20px;
+}
+
+.carousel_content_right{
+    width: 40%;
+}
+.carousel_banner{
+    width: 570px;
+    margin-left: 50px;
+}
+.carousel_banner img{
+    max-width: 100%;
+    display: block;
+}
+.service{
+    padding: 115px 0;
+    text-align: center;
+    background-image: url(./Samar/bg2.png);
+    background-size: cover;
+    background-position: top center;
+    text-align: center;
+}
+.service_content{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+    margin-top: 40px;
+}
+.service_item{
+    border-radius: 10px ;
+    box-shadow: 0 0 60px 0 rgba(0, 0, 0, 0.1);/*đổ bóng*/
+    padding: 30px 45px;
+    transition: all 0.5s;
+    background-color: #fff;
+    transform: translateY(0);/*vị trí ban đầu*/
+    border-image: 100;
+    border: 2px solid transparent;/*phải có để hiện ra border-image*/
+}
+.service_item:hover{
+    transform: translateY(-20px);/*hover ccais là nhảy dựng lên*/
+    border-image: url(./Samar/br.png) 1;
+}
+.service_item img{
+    width: 215px;
+}
+.service_item h3{
+    font-weight: 700;
+    font-size: 1.5rem;
+    color: #262626;
+    margin: 15px 0;
+}
+.aboutUs{
+    background-image: url(./Samar/bg15.png);
+    background-size: 100%;
+    background-position: center right;
+    background-repeat: no-repeat;
+    padding-bottom: 85px;
+    overflow: hidden;
+}
+.aboutUs_content{
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    position: relative;
+}
+.aboutUs_content_left{
+    width: 60%;
+    position: absolute;
+    left: -17%;
+}
+.aboutUs_content img{
+    border-radius: 0 100px 100px 0;
+    width: 100%;
+    display: block;
+    margin-right: 50px;
+}
+.aboutUs_content_right{
+    width: 50%;
+}
+.aboutUs_content_right i{
+    font-size: 24px;
+    color: #f55f8d;
+}
+.number{
+    background-image: url(./Samar/bg14.png);
+    background-position: center;
+    background-repeat: no-repeat;
+    padding: 80px 50px;
+    text-align: center;
+}
+.number_content{
+    display: flex;
+    justify-content: space-around;
+}
+.number_item i{
+    font-size: 45px;
+    background-image: linear-gradient(to right, #f55f8d 0, #f8ae56 51%, #f55f8d 100%);
+    background-size: 200%;
+    color: #fff;
+    width: 70px;
+    height: 70px;
+    line-height: 70px;
+    display: inline-block;
+    border-radius: 50%;
+    margin-bottom: 15px;
+}
+.number_item p:first-of-type{
+    font-size: 65px;
+    font-weight: 800;
+    color: #f55f8d;
+    line-height: 1;
+}
+.number_item p:last-of-type{
+    font-size: 18px;
+    color: black;
+}
+.feature{
+    overflow: hidden;
+    padding: 100px 0px;
+    background-image: url(./Samar/bg2.png);
+    background-size: 100%;
+    background-position: center;
+}
+.feature_content{
+    display: flex;
+    
+}
+.feature_item{
+    padding-bottom: 20px;
+    padding-right: 50px;
+}
+.feature_item:nth-child(2){
+    padding-left: 50px;
+    padding-right: 0px;
+}
+.feature_bg{
+    display: flex;
+    border-radius: 10px ;
+    box-shadow: 0 0 60px 0 rgba(0, 0, 0, 0.2);/*đổ bóng*/
+    padding: 30px;
+    align-items: center;
+}
+.feature_bg{
+    background-color: #fff;
+}
+.feature_bg i{
+    font-size: 65px;
+    padding-right: 15px;
+    color: #f55f8d;
+}
+.feature_bg h2{
+    color: black;
+}
+.feature_bg:hover{
+    background-image: linear-gradient(
+      to right,
+      #f55f8d  0%,
+      #f8ae56 51%,
+      #f55f8d 100%
+    );
+    background-size: 200%;
+}
+.feature_bg:hover i, .feature_bg:hover h2, .feature_bg:hover p{
+    transition: all 0.7s;
+    color: white;
+}
+.feature_banner{
+    margin-right: -80px;
+}
+.feature_banner img{
+    max-width: 100%;
+    animation: move1 5s infinite ;
+}
+@keyframes move1 {
+    0%{
+        transform: rotate(1deg) translate(1px, 1px);
+    }
+    50%{
+        transform: rotate(-1deg) translate(-1px, -1px);
+    }
+    100%{
+        transform: rotate(1deg) translate(1px, 1px);
+    }
+}
+.portfolio {
+    background-image: url(../Sanar/bg17.png);
+    background-size: cover;
+    background-position: top center;
+    text-align: center;
+    overflow: hidden;
+}
+.portfolio_content {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr) 1.5fr;
+    gap: 35px;
+}
+
+.portfolio_item {
+    border-radius: 10px;
+    position: relative;
+    overflow: hidden;
+}
+
+.portfolio_item::before {
+    content: "";
+    width: 50%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: -100%;
+    display: block;
+    background: linear-gradient(to right, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.3) 100%);
+    transform: skewX(-25deg);
+    transition: all 0.75s;
+}
+
+.portfolio_item:hover::before {
+    left: 125%;
+}
+
+.portfolio_overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.4);
+    opacity: 0;
+    transition: all 0.75s;
+}
+
+.portfolio_item:hover .portfolio_overlay {
+    opacity: 1;
+}
+
+.portfolio_text {
+    position: absolute;
+    bottom: 30px;
+    left: 30px;
+    text-align: left;
+    transform: translateY(150px);
+    transition: all 0.75s;
+}
+
+.portfolio_item:hover .portfolio_text {
+    transform: translateY(0);
+}
+
+.portfolio_text h3 {
+    font-size: 22px;
+    font-weight: 800;
+    color: white;
+}
+
+.portfolio_text p {
+    color: #fff;
+    opacity: 0.7;
+}
+
+.portfolio_item img {
+    width: 100%;
+    height: 100%;
+}
+
+.portfolio_item1 {
+    grid-column: 1 / span 2;
+}
+
+.portfolio_item5 {
+    grid-column: 1 / span 2;
+}
+
+.portfolio_item6 {
+    grid-column: 3 / 4;
+    grid-row: 2 / 4;
+}
